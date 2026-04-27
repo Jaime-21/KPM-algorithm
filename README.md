@@ -1,117 +1,73 @@
-# KMP Algorithm Implementation
+# KMP Algorithm
 
-## 📌 Overview
+## Environment
 
-This project implements the **Knuth-Morris-Pratt (KMP)** string matching algorithm, as described in Section 3.4.5 of *Compilers: Principles, Techniques, & Tools* by Alfred V. Aho.
-
-The goal of this implementation is to determine whether a given **pattern (keyword)** appears as a substring within a **text string**, which is a fundamental operation in the **lexical analysis phase of a compiler**.
-
----
-
-## ⚙️ Environment & Tools
-
-* **Operating System:** Windows 10
-* **Programming Language:** Java (JDK 17 or higher recommended)
-* **IDE (optional):** IntelliJ IDEA / Eclipse / VS Code
+* Operating System: Windows 11
+* Programming Language: Java
+* IDE: IntelliJ IDEA Ultimate
 
 ---
 
-## 🚀 How to Run the Program
+## How to Run
 
-1. Clone or download the repository.
-2. Open a terminal in the project folder.
-3. Compile the program:
+1. Copy the KMP code and paste it into your preferred IDE.
 
-```bash
-javac KMP.java
-```
+2. Run the program.
 
-4. Run the program:
-
-```bash
-java KMP
-```
-
-5. The program will execute test cases and display whether the pattern exists in each string.
+3. If you want to test with other strings, go to the `main` method and change or add new test cases.
 
 ---
 
-## 🧠 Algorithm Explanation
+## Description
 
-The **KMP algorithm** improves upon naive string matching by avoiding unnecessary comparisons.
+This program implements the **KMP (Knuth-Morris-Pratt)** algorithm described in Figure 3.20 of the book *Compilers: Principles, Techniques, & Tools*.
 
-Instead of restarting the comparison from the beginning after a mismatch, it uses a **failure function** (also called prefix function) to determine how much the pattern can safely "shift".
-
-### Key Ideas:
-
-* The variable `s` represents how many characters of the pattern have been matched.
-
-* When a mismatch occurs, the algorithm uses the failure function:
-
-  ```
-  s = f(s)
-  ```
-
-  This allows the algorithm to reuse previous matching information.
-
-* The text is scanned **only once**, making the algorithm efficient.
+The algorithm is used to check if a pattern (keyword) exists inside a text.
 
 ---
 
-## 📊 Time Complexity
+## Algorithm Explanation
 
-* **Failure Function Construction:** O(n)
-* **Pattern Search:** O(m)
+The algorithm has two main parts:
 
-Where:
+1. **Failure Function**
 
-* `n` = length of the pattern
-* `m` = length of the text
+   * It is built from the pattern.
+   * It helps the algorithm know how much to "jump" when a mismatch happens.
 
-👉 **Total Complexity: O(n + m)**
+2. **Search Process**
 
----
+   * The text is scanned from left to right.
+   * If characters match, the algorithm continues.
+   * If a mismatch occurs, it uses the failure function instead of starting over.
 
-## 🧪 Test Cases
-
-The following cases correspond to Exercise 3.4.6:
-
-| Case | Text      | Pattern | Result |
-| ---- | --------- | ------- | ------ |
-| a    | abababaab | ababaa  | true   |
-| b    | abababbaa | ababaa  | false  |
+This makes the algorithm efficient.
 
 ---
 
-## 🧩 Files Description
+## What is the failure function and what does it do?
 
-* `KMP.java`: Contains:
+The failure function is an array built from the pattern before starting the search.
 
-  * Failure function implementation
-  * KMP search algorithm
-  * Test cases in the `main` method
+For each position, it stores the length of the longest prefix that is also a suffix up to that point.
 
----
-
-## 🎯 Conclusion
-
-The KMP algorithm is efficient because it **never re-examines characters in the text**, and all fallback operations are handled using the failure function.
-
-This makes it suitable for applications such as:
-
-* Lexical analysis
-* Text search engines
-* Pattern recognition
+Its purpose is to avoid unnecessary comparisons.
+When a mismatch happens, instead of restarting, the algorithm uses this function to continue from a better position.
 
 ---
 
-## 👥 Authors
+## Test Cases
 
-* [Your Name]
-* [Partner Name]
+Pattern used: `ababaa`
+
+* Text: `abababaab` → Result: true
+* Text: `abababbaa` → Result: false
 
 ---
 
-## 📚 Reference
+## Notes
 
-Aho, A. V. (2007). *Compilers: Principles, Techniques, & Tools* (2nd ed.). Pearson.
+The KMP algorithm is efficient because it does not recheck characters in the text.
+It uses previous information from the pattern to move faster.
+
+Time complexity: **O(n + m)**
