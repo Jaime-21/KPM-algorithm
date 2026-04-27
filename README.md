@@ -6,7 +6,7 @@
 * Programming Language: Java
 * IDE: IntelliJ IDEA Ultimate
 
----
+
 
 ## How to Run
 
@@ -16,7 +16,7 @@
 
 3. If you want to test with other strings, go to the `main` method and change or add new test cases.
 
----
+
 
 ## Description
 
@@ -24,7 +24,7 @@ This program implements the **KMP (Knuth-Morris-Pratt)** algorithm described in 
 
 The algorithm is used to check if a pattern (keyword) exists inside a text.
 
----
+
 
 ## Algorithm Explanation
 
@@ -43,7 +43,7 @@ The algorithm has two main parts:
 
 This makes the algorithm efficient.
 
----
+
 
 ## What is the failure function and what does it do?
 
@@ -54,7 +54,7 @@ For each position, it stores the length of the longest prefix that is also a suf
 Its purpose is to avoid unnecessary comparisons.
 When a mismatch happens, instead of restarting, the algorithm uses this function to continue from a better position.
 
----
+
 
 ## Test Cases
 
@@ -63,7 +63,7 @@ Pattern used: `ababaa`
 * Text: `abababaab` → Result: true
 * Text: `abababbaa` → Result: false
 
----
+
 
 ## Notes
 
