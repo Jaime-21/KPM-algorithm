@@ -62,12 +62,3 @@ Pattern used: `ababaa`
 
 * Text: `abababaab` → Result: true
 * Text: `abababbaa` → Result: false
-
-
-
-## Notes
-
-The KMP algorithm is efficient because it does not recheck characters in the text.
-It uses previous information from the pattern to move faster.
-
-Time complexity: **O(n + m)**
